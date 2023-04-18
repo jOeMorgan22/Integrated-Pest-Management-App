@@ -39,9 +39,14 @@ public class IpmUsernamePwdAuthenticationProvider implements AuthenticationProvi
         if(user.isEmpty()){
             throw new UsernameNotFoundException(username);
         }
-        // if(passwordEncoder.matches(password, user.get().getPassword()) && user.get().isVerified() != true){
-        //     throw new DisabledException("Account not verified");
-        // }
+        /* 
+            This functionality is currently unavailable to allow for easier testing, refer to
+            IpmUsernamePwdAuthenticationProvider for more info
+            
+            if(passwordEncoder.matches(password, user.get().getPassword()) && user.get().isVerified() != true){
+                throw new DisabledException("Account not verified");
+        }
+        */
         if(passwordEncoder.matches(password, user.get().getPassword())){
                 List<GrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(new SimpleGrantedAuthority(user.get().getRole()));
